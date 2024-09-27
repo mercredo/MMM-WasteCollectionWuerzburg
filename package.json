@@ -1,7 +1,7 @@
 {
     "name": "MMM-WasteCollectionWuerzburg",
-    "version": "0.8",
-    "description": "Magic Mirror module that lists Waste disposal calendar of Wuerzburg",
+    "version": "0.8.0",
+    "description": "A module for MagicMirror² that lists waste disposal calendar of Wuerzburg.",
     "repository": {
         "type": "git"
     },
