@@ -20,8 +20,5 @@
         "https://github.com/mercredo/"
     ],
     "author": "Hanjo Schumacher",
-    "licence": "MIT",
-    "dependencies": {
-        "request": "^2.88.0"
-    }
+    "licence": "MIT"
 }

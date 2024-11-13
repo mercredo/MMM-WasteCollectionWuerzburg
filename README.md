@@ -1,17 +1,18 @@
-## MMM-WasteCollectionWuerzburg
+# MMM-WasteCollectionWuerzburg
 
-This is a Magic Mirror module to display waste collection dates of Würzburg on your [Magic Mirror](https://github.com/MagicMirrorOrg/MagicMirror) displays.
+This is a Magic Mirror module to display waste collection dates of Würzburg on your [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) displays.
 
 It uses [OpenData Platform Würzburg](https://opendata.wuerzburg.de) and its [Waste collection API endpoint](https://opendata.wuerzburg.de/explore/dataset/abfallkalender-wuerzburg/api).
 
 ![Screenshot](mmm-wastecollectionwuerzburg.png)
 
-### How to use
-1. Clone this repo into your Magic Mirrors modules directory with the following command: git clone https://github.com/mercredo/MMM-WasteCollectionWuerzburg.git.
-2. Install all the npm modules with *npm install*.
-3. Insert module config into Magic Mirror config.
+## How to use
+
+1. Clone this repo into your MagicMirrors modules directory with the following command: `git clone https://github.com/mercredo/MMM-WasteCollectionWuerzburg`.
+2. Insert module config into Magic Mirror config.
 
 ### Configuration Options
+
 | Option | Description |
 |---|---|
 | title | Title to display at the top of the module. <br><br> |
@@ -22,7 +23,6 @@ It uses [OpenData Platform Würzburg](https://opendata.wuerzburg.de) and its [Wa
 | showDistrict | Print out district name. Recommended if you select multiple districts. <br><br> **Default:** false |
 | showYear | Display year in date column. **Default:** false |
 | rowsMax | How many rows to be displayed. **Default:** 5
-
 
 ```js
 districts: [
@@ -64,19 +64,19 @@ rowsMax: 5 // max num rows to be displayed; 0 for unlimited
 ![Screenshot](mmm-wastecol-custom.png)
 
 ```js
-{
-    module: "MMM-WasteCollectionWuerzburg",
-    position: "top_left",
-    config: {
-        title: 'Abfallkalender Frauenland',
-        rowsMax: 2,
-        districts: ['Frauenland'],
-        categories: [ 
-            'Restmüll',
-            'Biomüll',
-            'Gelbe Säcke',
-            'Papier'
-        ]
-    }
-}
+    {
+        module: "MMM-WasteCollectionWuerzburg",
+        position: "top_left",
+        config: {
+            title: 'Abfallkalender Frauenland',
+            rowsMax: 2,
+            districts: ['Frauenland'],
+            categories: [ 
+                'Restmüll',
+                'Biomüll',
+                'Gelbe Säcke',
+                'Papier'
+            ]
+        }
+    },
 ```

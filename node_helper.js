@@ -1,7 +1,6 @@
 'use strict';
 const Helper = require('node_helper');
-const Request = require('request');
-const Logger = require('logger');
+const Log = require('logger');
 
 function deUmlaut(value){
     value = value.toLowerCase();
@@ -25,7 +24,7 @@ module.exports = Helper.create({
         orderBy: 'start ASC',
         fields: ['kategorie', 'start', 'bild', 'stadtteil_name']
     },
-    getData: function(data) {
+    getData: async function(data) {
         var _this = this;
 
         const currentDate = new Date();
@@ -46,22 +45,24 @@ module.exports = Helper.create({
 
         var url = this.config.sourceUrl + this.config.apiVersion + '/catalog/datasets/abfallkalender-wuerzburg/records?' + urlSearchParams.toString();
 
-        Logger.log(`Fetching opendata.wuerzburg.de data via ${url} ...`);
+        Log.log(`[${this.name}] Fetching opendata.wuerzburg.de data via ${url} ...`);
 
-        Request({ url: url, method: 'GET' }, function (error, response, body) {
-            if (error || response.statusCode != 200) {
-                throw new Error('Invalid API request');
-                return;
+        try {
+            const response = await fetch(url, { method: 'GET' });
+            if (!response.ok) {
+            throw new Error('Invalid API request');
             }
 
-            var res = JSON.parse(body);
+            const res = await response.json();
 
             if (!res || !res.results || res.results.length === 0) return;
 
             _this.sendSocketNotification('API_DATA_RECEIVED', {
-                rows: _this.processData(res.results)
+            rows: _this.processData(res.results)
             });
-        });
+        } catch (error) {
+            Log.error(`[${this.name}] ${error}`);
+        }
     },
     processData: function(data) {
         var byDate = {};
